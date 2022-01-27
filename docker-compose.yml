@@ -1,0 +1,13 @@
+version: '3'
+services:
+  denoise_train:
+    build:
+      context: .
+      dockerfile: ./docker/ml.Dockerfile
+    image: denoise_image:latest
+    volumes:
+      - /home/heorhii/latrock/data:/data
+    ports:
+      - 8888:8888
+    container_name: denoise_container
+    command: jupyter notebook --port=8888 --no-browser --ip=127.0.0.1 --allow-root
